@@ -14,7 +14,7 @@ const Header = ({
           <div className="filter">
             <label htmlFor="name">
               {" "}
-              <h3>filter name:</h3>
+              <h2>filter name:</h2>
             </label>
             <input
               id="name"
@@ -27,7 +27,7 @@ const Header = ({
           <div className="filter">
             <label htmlFor="gender">
               {" "}
-              <h3>filter by gender:</h3>
+              <h2>filter by gender:</h2>
             </label>
             <select
               name="gender"
@@ -45,7 +45,7 @@ const Header = ({
           </div>
           <div className="filter">
             <label htmlFor="species">
-              <h3>filter by species:</h3>
+              <h2>filter by species:</h2>
             </label>
             <select
               name="species"
@@ -63,7 +63,7 @@ const Header = ({
           <div className="filter">
             <label htmlFor="status">
               {" "}
-              <h3>filter by status:</h3>
+              <h2>filter by status:</h2>
             </label>
             <select
               name="status"
