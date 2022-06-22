@@ -1,0 +1,9 @@
+.cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  margin: 10px 100px;
+  justify-content: center;
+  align-items: center;
+    /* justify-content: space-around; */
+}
