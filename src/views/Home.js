@@ -1,11 +1,12 @@
 import axios from "axios";
-import { useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import Cards from "../components/Cards/Cards";
 import Header from "../components/Header/Header";
+import Character from "../context/Character";
 
 const Home = () => {
   let [filterCharacter, setFilterCharacter] = useState([]);
-  let [originalCharacter, setOriginalCharacter] = useState([]);
+  const { originalCharacter, setOriginalCharacter } = useContext(Character);
 
   useEffect(() => {
     axios.get("https://rickandmortyapi.com/api/character").then((res) => {

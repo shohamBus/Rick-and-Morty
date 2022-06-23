@@ -1,21 +1,21 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+// import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./Details.css";
+import Character from "../context/Character";
 
 const CharctersDetails = () => {
-  const [choosenCharcter, setChoosenCharcter] = useState([]);
+  const { originalCharacter } = useContext(Character);
+  let [choosenCharcter, setChoosenCharcter] = useState([]);
   const { id } = useParams();
-  //pull the specific product details from the API
+
+  choosenCharcter = originalCharacter.filter(
+    (character) => character.id === +id
+  );
+  // setChoosenCharcter(choosenCharcter);
   useEffect(() => {
-    axios
-      .get(`https://rickandmortyapi.com/api//character/${id}`)
-      .then((res) => {
-        setChoosenCharcter(res.data);
-        // setIsLoading(false);
-      });
+    setChoosenCharcter(choosenCharcter);
   }, []);
-  console.log(choosenCharcter);
 
   return (
     <div className="container">
@@ -28,14 +28,14 @@ const CharctersDetails = () => {
         ></img>
         <img
           className="profilePicture"
-          src={choosenCharcter.image}
-          alt={choosenCharcter.name}
+          src={choosenCharcter[0].image}
+          alt={choosenCharcter[0].name}
           height={300}
           width={300}
         />
         <h2>
-          {choosenCharcter.name} <br />
-          <small> Status: {choosenCharcter.status}</small>
+          {choosenCharcter[0].name} <br />
+          <small> Status: {choosenCharcter[0].status}</small>
         </h2>
         {/* </div> */}
         <div className="characterDetailsContainer">
@@ -43,12 +43,12 @@ const CharctersDetails = () => {
             <h3>General info</h3>
             <p>
               <strong>Species - </strong>
-              {choosenCharcter.species}
+              {choosenCharcter[0].species}
             </p>
 
             <p>
               <strong>Gender - </strong>
-              {choosenCharcter.gender}
+              {choosenCharcter[0].gender}
             </p>
           </div>
           <div>
@@ -59,29 +59,29 @@ const CharctersDetails = () => {
           </div>
           {/* <div>
             <h3>Origin</h3>
-            <p>{choosenCharcter.origin.name}</p>
+            <p>{choosenCharcter[0].origin.name}</p>
             <a href={choosenCharcter.origin.url}>
-              Go to {choosenCharcter.origin.name}
+            Go to {choosenCharcter.origin.name}
             </a>
           </div> */}
           {/* <div>
             <h3>Current location</h3>
             <p>{choosenCharcter.location.name}</p>
             <a href={choosenCharcter.location.url}>
-              {console.log(choosenCharcter.location.name)}; Go to{" "}
-              {choosenCharcter.location.name}
+            {console.log(choosenCharcter.location.name)}; Go to{" "}
+            {choosenCharcter.location.name}
             </a>
-          </div>
-
-        </div>
-        <div className="characterEpisodes">
-          <h3>Episodes</h3>
-          <div className="episodes">
+            </div>
+            
+            </div>
+            <div className="characterEpisodes">
+            <h3>Episodes</h3>
+            <div className="episodes">
             {choosenCharcter.episode.map((episode, i) => (
               <div key={episode}>
-                <a href={episode}>Episode {i + 1}</a>
+              <a href={episode}>Episode {i + 1}</a>
               </div>
-            ))}
+              ))}
             </div> */}
         </div>
       </div>

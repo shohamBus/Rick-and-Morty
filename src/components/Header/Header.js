@@ -40,7 +40,6 @@ const Header = ({
               <option value="none">All</option>
               <option value="Female">Female</option>
               <option value="Male">Male</option>
-              <option value="Unknown">Unknown</option>
             </select>
           </div>
           <div className="filter">
